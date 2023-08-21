@@ -1,53 +1,59 @@
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid';
 
 export default class Item {
-    private id: string 
-    private name: string
-    private price: number
-    private description: string
-    // private quantity: number 
+  private id: string;
+  private name: string;
+  private price: number;
+  private description: string;
 
-    constructor(name: string, price: number, description: string) {
-        this.id = uuidv4()
-        this.name = name
-        this.price = price
-        this.description = description
-        // this.quantity = quantity
-    }
+  constructor(name: string, price: number, description: string) {
+    this.id = uuidv4();
+    this.name = name;
+    this.price = price;
+    this.description = description;
+  }
 
-    // public getters
-    public getId() {
-        return this.id
-    }
-    public getName() {
-        return this.name
-    }
-    public getPrice() {
-        return this.price
-    }
-    public getDescription() {
-        return this.description
-    }
-    // public getQuantity() {
-    //     return this.quantity
-    // }
+    // Public getters
+    public getId(): string {
+        return this.id;
+      }
+    
+      public getName(): string {
+        return this.name;
+      }
+    
+      public getPrice(): number {
+        return this.price;
+      }
+    
+      public getDescription(): string {
+        return this.description;
+      }
 
-    // public setters
-    public setName(name: string) {
-        this.name = name
-    }
-    public setPrice(price: number) {
-        this.price = price
-    }
-    public setDescription(description: string) {
-        this.description = description
-    }
-    // public setQuantity() {
-    //     this.quantity = this.quantity
-    // }
+  // Create an HTML Div Element representing an item
+  itemElement(): HTMLDivElement {
+    const itemDiv = document.createElement('div');
+    itemDiv.classList.add('item');
+
+    const itemName = document.createElement('h3');
+    itemName.textContent = this.name;
+    itemDiv.appendChild(itemName);
+
+    const itemDescription = document.createElement('p');
+    itemDescription.textContent = this.description;
+    itemDiv.appendChild(itemDescription);
+
+    const itemPrice = document.createElement('p');
+    itemPrice.textContent = `Price: $${this.price}`;
+    itemDiv.appendChild(itemPrice);
+
+    const addToCartButton = document.createElement('button');
+    addToCartButton.textContent = 'Add to Cart';
+    addToCartButton.addEventListener('click', () => {
+      // Add item to cart logic here
+    });
+    itemDiv.appendChild(addToCartButton);
+
+    return itemDiv;
+  }
 }
-
-
-
-
-

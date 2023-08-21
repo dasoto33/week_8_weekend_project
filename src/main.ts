@@ -1,39 +1,54 @@
-// import Item from './classes/Item'
+import Item from './classes/Item'
 import User from './classes/User'
 import Shop from './classes/Shop'
 
-const shop = new Shop()
 
-// Create user
-const user = new User("David Soto", 25)
+// Entry point
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize the Shop
+  const shop = new Shop();
 
-// Add items to cart
-user.addToCart(shop.getItems()[0]) 
-user.addToCart(shop.getItems()[1]) 
-user.addToCart(shop.getItems()[2]) 
+  // Add event listener to the login form
+  const loginForm = document.getElementById('user-form');
+  if (loginForm) {
+    loginForm.addEventListener('submit', (event) => {
+      User.loginUser(event);
+    });
+  }
+});
 
-console.log("Original Cart:")
-user.printCart() 
+// const shop = new Shop()
 
-// Add quantity
-user.addQuantity(shop.getItems()[1], 3)
-console.log("\nUpdated quantity:")
-user.printCart()
+// // Create user
+// const user = new User("David Soto", 25)
 
-// Remove items from cart
-user.removeFromCart(shop.getItems()[0])
-console.log("\nUpdated items (after removed):") 
-user.printCart() 
+// // Add items to cart
+// user.addToCart(shop.getItems()[0]) 
+// user.addToCart(shop.getItems()[1]) 
+// user.addToCart(shop.getItems()[2]) 
 
-// Remove quantity from cart
-user.removeQuantityFromCart(shop.getItems()[1], 1) // Remove 1 instance of the second item from the cart
-console.log("\nRemoved quantity:")
-user.printCart() 
+// console.log("Original Cart:")
+// user.printCart() 
 
-console.log("\nTotal cart value:", user.cartTotal()) // Calculate and print the total cart value
+// // Add quantity
+// user.addQuantity(shop.getItems()[1], 3)
+// console.log("\nUpdated quantity:")
+// user.printCart()
 
-// Create a new user
-user.setName("Thanos")
-user.setAge(450)
+// // Remove items from cart
+// user.removeFromCart(shop.getItems()[0])
+// console.log("\nUpdated items (after removed):") 
+// user.printCart() 
 
-console.log("\nNew user:", user.getName(), user.getAge())
+// // Remove quantity from cart
+// user.removeQuantityFromCart(shop.getItems()[1], 1) // Remove 1 instance of the second item from the cart
+// console.log("\nRemoved quantity:")
+// user.printCart() 
+
+// console.log("\nTotal cart value:", user.cartTotal()) // Calculate and print the total cart value
+
+// // Create a new user
+// user.setName("Thanos")
+// user.setAge(450)
+
+// console.log("\nNew user:", user.getName(), user.getAge())
